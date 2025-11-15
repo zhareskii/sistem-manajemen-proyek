@@ -1,0 +1,4 @@
+Actions to add to SiteController behaviors:
+1. Add 'get-subtask-comments' and 'get-subtask-help-requests' to the 'only' array
+2. Add these actions to the member role rules
+3. Add these actions to the verbs array if needed

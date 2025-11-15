@@ -1,0 +1,12 @@
+RewriteEngine On
+
+# Explicitly bypass rewrites for static assets to avoid routing through index.php
+RewriteRule ^assets/ - [L]
+RewriteRule ^css/ - [L]
+RewriteRule ^js/ - [L]
+RewriteRule ^images/ - [L]
+
+# Fallback: route non-existent files and directories to index.php
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule . index.php [L]
