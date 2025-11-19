@@ -591,7 +591,7 @@ if (!empty($userProjects)):
           </div>
           <div class="col-left">
             <label style="display:block;font-weight:600;margin-bottom:6px;">Deadline</label>
-            <input type="date" name="Card[due_date]" required>
+            <input type="date" name="Card[due_date]" required min="<?= date('Y-m-d') ?>">
           </div>
           <div class="col-right">
             <label style="display:block;font-weight:600;margin-bottom:6px;">Assigned User</label>
@@ -737,7 +737,7 @@ if (!empty($userProjects)):
                 </div>
                 <div>
                     <label style="display:block;font-weight:600;margin-bottom:6px;">Due Date</label>
-                    <input type="date" name="Card[due_date]" id="edit_due_date">
+                    <input type="date" name="Card[due_date]" id="edit_due_date" min="<?= date('Y-m-d') ?>">
                 </div>
             </div>
             <div style="margin-top:14px; display:flex; justify-content:flex-end; gap:10px;">
@@ -837,7 +837,7 @@ if (!empty($userProjects)):
           </div>
           <div class="full">
             <label style="display:block;font-weight:600;margin-bottom:6px;">Due Date</label>
-            <input type="date" name="Card[due_date]" required>
+            <input type="date" name="Card[due_date]" required min="<?= date('Y-m-d') ?>">
           </div>
         </div>
         <div style="margin-top:14px; display:flex; justify-content:flex-end; gap:10px;">

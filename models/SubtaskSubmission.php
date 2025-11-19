@@ -56,4 +56,16 @@ class SubtaskSubmission extends ActiveRecord
     {
         return $this->hasOne(User::class, ['user_id' => 'reviewer_id']);
     }
+
+    public function afterSave($insert, $changedAttributes)
+    {
+        parent::afterSave($insert, $changedAttributes);
+        if ($this->status === 'accepted') {
+            $subtask = $this->subtask;
+            if ($subtask && $subtask->status !== 'done') {
+                $subtask->status = 'done';
+                $subtask->save(false, ['status']);
+            }
+        }
+    }
 }

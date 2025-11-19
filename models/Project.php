@@ -28,6 +28,7 @@ class Project extends \yii\db\ActiveRecord
             [['created_by', 'team_lead_id'], 'integer'],
             [['progress_percentage'], 'number'],
             [['created_at', 'deadline'], 'safe'],
+            ['deadline', 'validateDeadline'],
             [['project_name'], 'string', 'max' => 100],
             [['difficulty_level'], 'in', 'range' => ['easy', 'medium', 'hard']],
             [['status'], 'in', 'range' => ['planning', 'active', 'completed', 'cancelled']],
@@ -35,6 +36,16 @@ class Project extends \yii\db\ActiveRecord
             [['status'], 'default', 'value' => 'planning'],
             [['progress_percentage'], 'default', 'value' => 0],
         ];
+    }
+
+    public function validateDeadline($attribute, $params)
+    {
+        if ($this->$attribute) {
+            $today = date('Y-m-d');
+            if (strtotime($this->$attribute) < strtotime($today)) {
+                $this->addError($attribute, 'Deadline cannot be in the past.');
+            }
+        }
     }
 
     /**

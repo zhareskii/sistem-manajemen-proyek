@@ -22,7 +22,7 @@ class Card extends \yii\db\ActiveRecord
      */
     public function rules()
     {
-        return [
+        return [ //array, 
             [['board_id', 'card_title', 'created_by', 'assigned_role'], 'required'],
             [['board_id', 'position', 'created_by'], 'integer'],
             [['description'], 'string'],
@@ -32,8 +32,19 @@ class Card extends \yii\db\ActiveRecord
             [['priority'], 'string', 'max' => 10],
             [['estimated_hours', 'actual_hours'], 'number'],
             [['created_at', 'due_date'], 'safe'],
+            ['due_date', 'validateDueDate'],
             [['status'], 'default', 'value' => 'todo'],
         ];
+    }
+
+    public function validateDueDate($attribute, $params)
+    {
+        if ($this->$attribute) {
+            $today = date('Y-m-d');
+            if (strtotime($this->$attribute) < strtotime($today)) {
+                $this->addError($attribute, 'Due date cannot be in the past.');
+            }
+        }
     }
 
     /**

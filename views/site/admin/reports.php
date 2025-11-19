@@ -667,15 +667,15 @@ body {
 </style>
 
 <div class="reports-page">
-    <div class="page-header">
         <div class="header-left">
             <h1>Reports</h1>
             <p>Project and Team Productivity Overview</p>
         </div>
-        <button class="print-btn" onclick="openPrintDialog()">
-            🖨️ Print Report
-        </button>
-    </div>
+        <div class="header-right">
+            <button class="print-btn" onclick="openPrintDialog()">
+                🖨️ Print Report
+            </button>
+        </div>
 
     <!-- Project Reports Section -->
     <h2 class="section-title">Project Reports</h2>

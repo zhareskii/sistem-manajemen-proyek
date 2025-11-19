@@ -468,7 +468,7 @@ $this->title = 'Projects';
                 </div>
                 <div>
                     <label style="display:block;font-weight:600;margin-bottom:6px;">Deadline</label>
-                    <input type="date" name="Project[deadline]" id="edit_deadline">
+                    <input type="date" name="Project[deadline]" id="edit_deadline" min="<?= date('Y-m-d') ?>">
                 </div>
             </div>
             <div style="margin-top:14px; display:flex; justify-content:flex-end; gap:10px;">
@@ -522,7 +522,7 @@ $this->title = 'Projects';
           </div>
           <div class="full">
             <label style="display:block;font-weight:600;margin-bottom:6px;">Deadline</label>
-            <input type="date" name="Project[deadline]" required>
+            <input type="date" name="Project[deadline]" required min="<?= date('Y-m-d') ?>">
           </div>
         </div>
         <div style="margin-top:14px; display:flex; justify-content:flex-end; gap:10px;">

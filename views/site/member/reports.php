@@ -23,11 +23,36 @@ body {
     margin: 0 auto;
 }
 
+.reports-header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
 .reports-header {
     font-size: 24px;
     font-weight: 700;
     color: #000;
-    margin-bottom: 20px;
+}
+
+.print-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #115f67;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(17,63,103,0.15);
+    transition: background-color 0.2s;
+}
+
+.print-btn:hover {
+    background: #0e4d54;
 }
 
 .stats-row {
@@ -206,6 +231,12 @@ body {
 }
 
 @media (max-width: 768px) {
+    .reports-header-container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+    }
+    
     .stats-row {
         grid-template-columns: 1fr;
     }
@@ -215,20 +246,21 @@ body {
     }
 }
 @media print {
-    .mobile-header, .sidebar, .sidebar-overlay, .reports-toolbar { display: none !important; }
+    .mobile-header, .sidebar, .sidebar-overlay, .print-btn { display: none !important; }
     .main-content { margin-left: 0 !important; padding: 0 !important; }
     .reports-container { max-width: 100%; }
 }
 </style>
 
 <div class="reports-container">
-    <div class="reports-toolbar" style="display:flex;align-items:center;gap:10px;justify-content:flex-end;margin-bottom:16px;">
-        <button id="printReportsBtn" class="print-btn" style="display:inline-flex;align-items:center;gap:8px;background:#115f67;color:#fff;border:none;border-radius:8px;padding:10px 14px;font-weight:600;cursor:pointer;box-shadow:0 2px 8px rgba(17,63,103,0.15);">
+    <!-- Header dengan tombol print sejajar -->
+    <div class="reports-header-container">
+        <h1 class="reports-header">Reports</h1>
+        <button id="printReportsBtn" class="print-btn">
             <i class="bi bi-printer"></i>
             <span>Print</span>
         </button>
     </div>
-    <h1 class="reports-header">Reports</h1>
     
     <!-- Statistics Cards -->
     <div class="stats-row">

@@ -21,6 +21,19 @@ $config = [
         'user' => [
             'identityClass' => 'app\models\User',
             'enableAutoLogin' => true,
+            'loginUrl' => ['site/login'],
+            'identityCookie' => [
+                'name' => '_mpwIdentity',
+                'httpOnly' => true,
+                'sameSite' => 'Lax',
+            ],
+        ],
+        'session' => [
+            'name' => 'MPWSESSID',
+            'cookieParams' => [
+                'httpOnly' => true,
+                'sameSite' => 'Lax',
+            ],
         ],
         'errorHandler' => [
             'errorAction' => 'site/error',
@@ -117,6 +130,22 @@ $config = [
                 
             ],
         ],
+    ],
+    'as access' => [
+        'class' => \yii\filters\AccessControl::class,
+        'rules' => [
+            [
+                'allow' => true,
+                'actions' => ['login', 'register', 'error', 'index'],
+            ],
+            [
+                'allow' => true,
+                'roles' => ['@'],
+            ],
+        ],
+        'denyCallback' => function ($rule, $action) {
+            return \Yii::$app->response->redirect(['site/login']);
+        },
     ],
     'params' => $params,
 ];

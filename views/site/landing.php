@@ -54,7 +54,7 @@ body {
     gap: 40px;
 }
 .feature-card {
-    background: #fff;
+    background: rgb(254, 245, 172);
     border-radius: 30px;
     box-shadow: 0 8px 32px rgba(151,210,236,0.15);
     padding: 40px 30px;

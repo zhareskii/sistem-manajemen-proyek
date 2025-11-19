@@ -62,12 +62,12 @@ class Board extends \yii\db\ActiveRecord
     /**
      * Get cards grouped by status for kanban view
      */
-    public function getCardsByStatus()
+    public function getCardsByStatus() 
     {
         $cards = $this->getCards()->with(['creator', 'assignedUsers'])->all();
         
-        $grouped = [
-            'todo' => [],
+        $grouped = [ 
+            'todo' => [], //hash map
             'in_progress' => [],
             'review' => [],
             'done' => []

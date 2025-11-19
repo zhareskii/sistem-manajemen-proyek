@@ -11,7 +11,7 @@ $this->title = 'Kelola Users';
     --primary: rgb(37,49,109);
     --secondary: rgb(95,111,148);
     --accent: rgb(151,210,236);
-    --bg: rgb(254,245,172);
+    --bg: rgba(255, 255, 255, 1);
     --white: #fff;
     --success: #28a745;
     --warning: #ffc107;
@@ -33,8 +33,7 @@ body {
     overflow-x: hidden;
 }
 
-.main-content {
-    margin-left: 70px;
+.users-page {
     padding: 20px 30px;
     min-height: 100vh;
     position: relative;
@@ -440,8 +439,7 @@ body {
 
 /* Responsive */
 @media (max-width: 768px) {
-    .main-content {
-        margin-left: 0;
+    .users-page {
         padding: 15px 20px;
     }
 
@@ -469,7 +467,7 @@ body {
 }
 </style>
 
-<div class="main-content">
+<div class="users-page">
     <div class="page-header">
         <div class="page-title">👥 Manage Users</div>
         <a href="#" class="btn-add" onclick="openCreateModal()">+ Add New User</a>
